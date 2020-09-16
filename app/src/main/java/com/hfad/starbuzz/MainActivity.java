@@ -6,7 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,7 +28,12 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        ListView listView = (ListView)findViewById(R.id.list_options);
+        ListView listView = (ListView) findViewById(R.id.list_options);
+        String[] options = getResources().getStringArray(R.array.options);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, options);
+
+        listView.setAdapter(adapter);
         listView.setOnItemClickListener(itemClickListener);
     }
 }
